@@ -1,2 +1,5 @@
-datasets/cleaned_dataset/dse_cleaned_1999_2023.csv
+datasets/cleaned_dataset/*.csv
 
+docker/logs/
+logs/
+*.log 
