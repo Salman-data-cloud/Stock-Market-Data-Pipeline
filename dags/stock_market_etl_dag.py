@@ -7,6 +7,7 @@ import os
 sys.path.append('/opt/airflow/scripts')
 
 from preprocess import clean_stock_data
+from file_import import import_files
 
 default_args ={
     'owner': 'Salman',
@@ -22,9 +23,14 @@ with DAG(
     catchup= True
 ) as dag:
     
+    extract_task = PythonOperator(
+        task_id = 'extract_files_task',
+        python_callable = import_files
+    )
+    
     preprocess_task = PythonOperator(
         task_id = 'clean_stock_data_task' ,
         python_callable = clean_stock_data   
     )
 
-    preprocess_task
+    extract_task >> preprocess_task
