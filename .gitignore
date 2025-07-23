@@ -3,3 +3,5 @@ datasets/cleaned_dataset/*.csv
 docker/logs/
 logs/
 *.log 
+.env
+
